@@ -9,6 +9,7 @@ const SearchingPet = () => {
         <SidebarMenu></SidebarMenu>
             <div className="min-h-screen bg-gradient-to-r bg-pink-200 flex justify-center items-center">
                 <div className="w-full max-w-3xl space-y-6">
+                <h1 className="text-2xl font-bold text-gray-800 mb-4">FIND YOUR FUTURE FURRY FRIEND!!</h1>
                     {pets.length > 0 ? (
                     pets.map((pet, index) => (
                         <div

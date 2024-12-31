@@ -10,6 +10,8 @@ const Readblog = () => {
         <SidebarMenu></SidebarMenu>
             <div className="min-h-screen bg-gradient-to-r bg-pink-200 flex justify-center items-center">
                 <div className="w-full max-w-3xl space-y-6">
+                <h1 className="text-2xl font-bold text-gray-800 mb-4">Blogs & Resouces</h1>
+                <h2 className="text-2xl font-bold text-gray-600 mb-1">Day to Day Guideline for Your Furry Friend!!!!</h2>
                     {blogs.length > 0 ? (
                     blogs.map((blog, index) => (
                         <div

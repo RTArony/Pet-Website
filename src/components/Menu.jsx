@@ -29,17 +29,8 @@ const SidebarMenu = () => {
             </button>
           </div>
           <nav className="flex flex-col space-y-4 p-4">
-            <Link to="/" className="hover:text-pink-400">
+            <Link to="/home" className="hover:text-pink-400">
               Home
-            </Link>
-            <Link to="/donation" className="hover:text-pink-400">
-              Donation
-            </Link>
-            <Link to="/userprofile" className="hover:text-pink-400">
-              User Profile
-            </Link>
-            <Link to="/petlisting" className="hover:text-pink-400">
-              Pet Family
             </Link>
             <Link to="/writeblog" className="hover:text-pink-400">
               Blog Writing
@@ -48,10 +39,10 @@ const SidebarMenu = () => {
               Read Blog
             </Link>
             <Link to="/adoption" className="hover:text-pink-400">
-              Adopt A Pet
+              Take Adoption
             </Link>
             <Link to="/searchingpet" className="hover:text-pink-400">
-              Posts For Pets
+              Take Adoption Post
             </Link>
             <Link to="/seeadoption" className="hover:text-pink-400">
               Adoption Post
@@ -65,6 +56,10 @@ const SidebarMenu = () => {
             <Link to="/rescueanimal" className="hover:text-pink-400">
               Pet Rescue
             </Link>
+            <Link to="/userprofile" className="hover:text-pink-400">
+              User Profile
+            </Link>
+            
           </nav>
         </div>
       )}

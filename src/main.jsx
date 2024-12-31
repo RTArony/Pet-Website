@@ -15,17 +15,17 @@ import GiveAdoption from './components/GiveAdoption';
 import SeeAdoption from './components/SeeAdoption';
 import LostandFound from './components/LostandFound';
 import Rescue from './components/Rescue';
-import Petlisting from './components/Petlisting';
+
 import Login from './components/Login';
 import Register from './components/Register';
-import Donation from './components/Donation';
 import Homepage from './components/Homepage';
+//import Vet from './components/Vet';
 
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <Homepage></Homepage>,
   },
   {
@@ -33,12 +33,8 @@ const router = createBrowserRouter([
     element: <Login></Login>,
   },
   {
-    path: "/register",
+    path: "/",
     element: <Register></Register>,
-  },
-  {
-    path: "/donation",
-    element: <Donation></Donation>,
   },
   {
     path: "/writeblog",
@@ -48,11 +44,6 @@ const router = createBrowserRouter([
     path: "/readblog",
     element: <Readblog></Readblog>,
     loader: () => fetch("http://localhost:5000/blogs")
-  },
-  {
-    path: "/petlisting",
-    element: <Petlisting></Petlisting>,
-    loader: () => fetch("http://localhost:5000/petlist")
   },
   {
     path: "/adoption",
@@ -90,6 +81,11 @@ const router = createBrowserRouter([
     element: <Rescue></Rescue>,
     loader: () => fetch("http://localhost:5000/rescue")
   },
+  //{
+    // path: "/vet",
+    // element: <Vet></Vet>,
+    // loader: () => fetch("http://localhost:5000/vets")
+  //},
 ]);
 
 createRoot(document.getElementById('root')).render(

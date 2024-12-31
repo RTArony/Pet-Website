@@ -6,6 +6,8 @@ const PetRescue = () => {
 
     const rescued = useLoaderData();
 
+    const [rescueds, setrescueds]= useState(rescued);
+
 
 
     const [selectedCondition, setSelectedCondition] = useState([]);
@@ -30,6 +32,8 @@ const PetRescue = () => {
             .then(res => res.json())
             .then(data => {
                 console.log("deleted succesfully",data);
+                const remaining= rescueds.filter(resc => resc._id !== _id);
+                setrescueds(remaining)
             })
 
     }
