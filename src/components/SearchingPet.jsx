@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import SidebarMenu from "./Menu";
 
 const SearchingPet = () => {
     const pets = useLoaderData();
+
+    const [allpets, setallpets]= useState(pets);
+
+    const handledelete = _id =>{
+        console.log('delete',_id);
+        fetch(`http://localhost:5000/searchpet/${_id}`,{
+            method: 'DELETE',
+          })
+            .then(res => res.json())
+            .then(data => {
+                console.log("deleted succesfully",data);
+                const remaining= allpets.filter(remain => remain._id !== _id);
+                setallpets(remaining)
+            })
+
+    }
+
     return (
         <div >
         <SidebarMenu></SidebarMenu>
@@ -16,6 +33,12 @@ const SearchingPet = () => {
                         key={index}
                         className="bg-white shadow-md rounded-lg p-6 border border-gray-200 hover:shadow-lg transition"
                         >
+                        <button 
+                        onClick={()=> handledelete(pet._id)}
+                        className="text-gray-500 hover:text-black focus:outline-none"
+                        >
+                        X
+                        </button>
                         <div className="flex items-center justify-between">
                             <h3 className="text-lg font-bold text-gray-800">{pet.selectedAnimal}</h3>
                         </div>

@@ -6,6 +6,7 @@ const LostAndFound = () => {
 
     const losts = useLoaderData();
 
+    const [alllost, setalllost]= useState(losts);
 
 
     const [selectedAnimal, setSelectedAnimal] = useState("");
@@ -21,6 +22,20 @@ const LostAndFound = () => {
       setImage(URL.createObjectURL(file));
     }
     };
+
+    const handledelete = _id =>{
+        console.log('delete',_id);
+        fetch(`http://localhost:5000/lost/${_id}`,{
+            method: 'DELETE',
+          })
+            .then(res => res.json())
+            .then(data => {
+                console.log("deleted succesfully",data);
+                const remaining= alllost.filter(remain => remain._id !== _id);
+                setalllost(remaining)
+            })
+
+    }
     
 
     const handleSubmit = (e) => {
@@ -178,7 +193,10 @@ const LostAndFound = () => {
                 </div>
             </div>
 
-            <div className="min-h-screen bg-gradient-to-r bg-pink-200 flex justify-center items-center">
+
+
+
+            {/* <div className="min-h-screen bg-gradient-to-r bg-pink-200 flex justify-center items-center">
                 <div className="w-full max-w-3xl space-y-6">
                 <h1 className="text-2xl font-bold text-gray-800 mb-4">LOST ANIMALS</h1>
                 <h1 className="text-2xl font-bold text-gray-600 mb-1">Help People Find Their Furry Friend!!!!</h1>
@@ -188,6 +206,12 @@ const LostAndFound = () => {
                         key={index}
                         className="bg-white shadow-md rounded-lg p-6 border border-gray-200 hover:shadow-lg transition"
                         >
+                        <button 
+                        onClick={()=> handledelete(lost._id)}
+                        className="text-gray-500 hover:text-black focus:outline-none"
+                        >
+                        X
+                        </button>
                         <div className="flex items-center justify-between">
                             <h3 className="text-lg font-bold text-gray-800">Animal :{lost.selectedAnimal}</h3>
                         </div>
@@ -206,7 +230,48 @@ const LostAndFound = () => {
                     <p className="text-center text-gray-500">No pet available yet.</p>
                     )}
                 </div>
+            </div> */}
+
+            <div className="min-h-screen bg-gradient-to-r bg-pink-200 flex justify-center items-center">
+            <div className="w-full max-w-6xl space-y-6">
+                <h1 className="text-2xl font-bold text-gray-800 mb-4">LOST ANIMALS</h1>
+                <h1 className="text-2xl font-bold text-gray-600 mb-1">Help People Find Their Furry Friend!!!!</h1>
+                {losts.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {losts.map((lost, index) => (
+                    <div
+                        key={index}
+                        className="bg-white shadow-md rounded-lg p-6 border border-gray-200 hover:shadow-lg transition"
+                    >
+                        <button 
+                        onClick={() => handledelete(lost._id)}
+                        className="text-gray-500 hover:text-black focus:outline-none"
+                        >
+                        X
+                        </button>
+                        <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-bold text-gray-800">Animal: {lost.selectedAnimal}</h3>
+                        </div>
+                        <p className="text-gray-800 mt-4"><strong>Last Seen at:</strong> {lost.lastSeen}</p>
+                        <p className="text-gray-800 mt-4"><strong>Special Mark:</strong> {lost.specialMark}</p>
+                        <p className="text-gray-800 mt-4"><strong>Description:</strong> {lost.description}</p>
+                        <p className="text-gray-800 mt-4"><strong>If Found, Please Return to:</strong> {lost.returnPlace}</p>
+                        <figure>
+                        <img 
+                            src={lost.image}
+                            className="w-full h-auto rounded-md mt-4"
+                            alt="Lost Animal"
+                        />
+                        </figure>
+                    </div>
+                    ))}
+                </div>
+                ) : (
+                <p className="text-center text-gray-500">No pet available yet.</p>
+                )}
             </div>
+            </div>
+
         
         </div>
 

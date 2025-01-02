@@ -19,6 +19,8 @@ import Rescue from './components/Rescue';
 import Login from './components/Login';
 import Register from './components/Register';
 import Homepage from './components/Homepage';
+import Event from './components/Event';
+import Share from './components/Share';
 //import Vet from './components/Vet';
 
 
@@ -80,6 +82,17 @@ const router = createBrowserRouter([
     path: "/rescueanimal",
     element: <Rescue></Rescue>,
     loader: () => fetch("http://localhost:5000/rescue")
+  },
+  {
+    path: "/event",
+    element: <Event></Event>,
+    loader: () => fetch("http://localhost:5000/events")
+    
+  },
+  {
+    path: "/share",
+    element: <Share></Share>,
+    loader: () => fetch("http://localhost:5000/shares")
   },
   //{
     // path: "/vet",

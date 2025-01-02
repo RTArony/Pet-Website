@@ -56,6 +56,12 @@ const SidebarMenu = () => {
             <Link to="/rescueanimal" className="hover:text-pink-400">
               Pet Rescue
             </Link>
+            <Link to="/event" className="hover:text-pink-400">
+              Events
+            </Link>
+            <Link to="/share" className="hover:text-pink-400">
+              Share Your Pet
+            </Link>
             <Link to="/userprofile" className="hover:text-pink-400">
               User Profile
             </Link>
